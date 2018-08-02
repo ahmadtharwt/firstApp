@@ -32,8 +32,9 @@ router.get('/', (req, res, next) => {
   Puppy.findAll({
     where: req.query,
     include: [{all: true}],
-    //offset: parseInt(req.query.offset),
-    //limit: req.query.limit,
+    offset: req.query.offset,
+    limit: req.query.limit,
+    subQuery: false,
   })
   // quick one-line res.send. This will res.send whatever the previous promise resolves to.
   .then(res.send.bind(res))

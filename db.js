@@ -29,7 +29,7 @@ const Park = require('./models/Park');
 const Food = require('./models/Food');
 const Location = require('./models/Location');
 const Visit = require('./models/Visit');
-const Patient = require('./models/Location');
+const Patient = require('./models/Patient');
 
 // this will put a foreign key for parkId in the Puppy model
 // and give Puppy .setPark() and .getPark() instance methods

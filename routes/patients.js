@@ -1,6 +1,7 @@
 const router = require('express').Router();
 
 const Patient = require('../models/Patient');
+const Visit = require('../models/Visit');
 
 
 module.exports = router;
