@@ -1,9 +1,25 @@
 const Sequelize = require('sequelize');
 
 // when you go to start the server, be smarter than me and make sure you have postgres actually running on your machine!
-const db = new Sequelize('postgres://localhost:5432/puppies', {
-  logging: false
+const db = new Sequelize('puppies', 'root', null, {
+  host: '127.0.0.1',
+  dialect: 'mysql',
+  operatorsAliases: false,
+
+  pool: {
+    max: 5,
+    min: 0,
+    acquire: 30000,
+    idle: 10000
+  }
 });
+db.authenticate()
+  .then(() => {
+    console.log('Connection has been established successfully.');
+  })
+  .catch(err => {
+    console.error('Unable to connect to the database:', err);
+  });
 
 module.exports = db;
 
@@ -12,9 +28,12 @@ const Puppy = require('./models/Puppy');
 const Park = require('./models/Park');
 const Food = require('./models/Food');
 const Location = require('./models/Location');
+const Visit = require('./models/Visit');
+const Patient = require('./models/Location');
 
 // this will put a foreign key for parkId in the Puppy model
 // and give Puppy .setPark() and .getPark() instance methods
+Patient.hasMany(Visit);
 Puppy.belongsTo(Park);
 // this will give Park the magic methods for addPuppy, etc.
 // but we already have a foreign key for parkId in the Puppy model, so it will maintain

@@ -31,7 +31,9 @@ router.get('/', (req, res, next) => {
   // if no query is present, we there is no where condition to match against, so everthing is returned. neat!
   Puppy.findAll({
     where: req.query,
-    include: [{all: true}]
+    include: [{all: true}],
+    //offset: parseInt(req.query.offset),
+    //limit: req.query.limit,
   })
   // quick one-line res.send. This will res.send whatever the previous promise resolves to.
   .then(res.send.bind(res))
