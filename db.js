@@ -34,6 +34,7 @@ const Patient = require('./models/Location');
 // this will put a foreign key for parkId in the Puppy model
 // and give Puppy .setPark() and .getPark() instance methods
 Patient.hasMany(Visit);
+Visit.belongsTo(Patient);
 Puppy.belongsTo(Park);
 // this will give Park the magic methods for addPuppy, etc.
 // but we already have a foreign key for parkId in the Puppy model, so it will maintain

@@ -30,7 +30,7 @@ router.get('/', (req, res, next) => {
   // this allows use to use routes like /patients?favFood=pizza to get all patients who love pizza.
   // if no query is present, we there is no where condition to match against, so everthing is returned. neat!
   Patient.findAll({
-    //where: req.query,
+    where: req.query,
     include: [{all: true}],
     //offset: parseInt(req.query.offset),
     //limit: req.query.limit,

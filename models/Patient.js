@@ -2,9 +2,10 @@ const Sequelize = require('sequelize');
 const db = require('../db');
 
 const Patient = db.define('patient', {
-    MRN: {
+    id: {
       type: Sequelize.INTEGER,
       allowNull: false,
+      primaryKey: true,
       validate: {
         notEmpty: true,
       }

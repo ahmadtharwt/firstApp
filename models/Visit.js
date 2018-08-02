@@ -9,7 +9,7 @@ const Visit = db.define('visit', {
         notEmpty: true,
       }
     },
-    MRN: {
+    patientId: {
         type: Sequelize.INTEGER,
         allowNull: false,
         validate: {
